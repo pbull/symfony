@@ -123,7 +123,7 @@ class MarkdownDescriptor extends Descriptor
             .($command->getDescription() ? $command->getDescription()."\n\n" : '')
             .'### Usage'."\n\n"
             .array_reduce(array_merge(array($command->getSynopsis()), $command->getAliases(), $command->getUsages()), function ($carry, $usage) {
-                return $carry.'* `'.$usage.'`'."\n";
+                return $carry.'* `'.str_replace('<', '\<', $usage).'`'."\n";
             })
         );
 
